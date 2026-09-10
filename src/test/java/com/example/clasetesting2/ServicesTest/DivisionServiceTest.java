@@ -1,6 +1,7 @@
 package com.example.clasetesting2.ServicesTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import com.example.clasetesting2.DTO.NumerosDTO;
@@ -21,4 +22,17 @@ public class DivisionServiceTest {
 
         assertEquals(2, resultado);
     }
+    @Test
+void testDividirPorCero() {
+
+    NumerosDTO numerosDto = new NumerosDTO();
+    numerosDto.setNumero1(10);
+    numerosDto.setNumero2(0);
+
+    DivisionService divisionService = new DivisionService();
+
+    assertThrows(IllegalArgumentException.class, () -> {
+        divisionService.dividir(numerosDto);
+    });
+}
 }

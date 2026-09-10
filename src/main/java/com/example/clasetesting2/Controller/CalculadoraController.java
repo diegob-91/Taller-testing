@@ -12,15 +12,15 @@ import com.example.clasetesting2.Services.RestaService;
 import com.example.clasetesting2.Services.SumaService;
 
 @RestController
-@RequestMapping("/api/persona")
-public class SaludoController {
+@RequestMapping("/api/calculadora")
+public class CalculadoraController {
 
     private final SumaService sumaService;
     private final RestaService restaService;
     private final MultiplicacionService multiplicacionService;
     private final DivisionService divisionService;
 
-    public SaludoController(
+    public CalculadoraController(
         SumaService sumaService,
         RestaService restaService,
         MultiplicacionService multiplicacionService,
@@ -32,34 +32,23 @@ public class SaludoController {
     this.divisionService = divisionService;
 }
 
-    @PostMapping("/enviar")
-    public int saludarPOST(@RequestBody NumerosDTO numerosDTO) {
+    @PostMapping("/suma")
+public int sumarPOST(@RequestBody NumerosDTO numerosDTO) {
+    return sumaService.sumar(numerosDTO);
+}
 
-        int resultado = sumaService.sumar(numerosDTO);
-
-        return resultado;
-    }
-
-    @PostMapping("/resta")
+@PostMapping("/resta")
 public int restarPOST(@RequestBody NumerosDTO numerosDTO) {
-
-    int resultado = restaService.restar(numerosDTO);
-
-    return resultado;
+    return restaService.restar(numerosDTO);
 }
-    @PostMapping("/multiplicacion")
+
+@PostMapping("/multiplicacion")
 public int multiplicarPOST(@RequestBody NumerosDTO numerosDTO) {
-
-    int resultado = multiplicacionService.multiplicar(numerosDTO);
-
-    return resultado;
+    return multiplicacionService.multiplicar(numerosDTO);
 }
-    @PostMapping("/division")
+
+@PostMapping("/division")
 public int dividirPOST(@RequestBody NumerosDTO numerosDTO) {
-
-    int resultado = divisionService.dividir(numerosDTO);
-
-    return resultado;
+    return divisionService.dividir(numerosDTO);
 }
-
 }
