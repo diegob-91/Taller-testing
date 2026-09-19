@@ -21,4 +21,18 @@ public class MultiplicacionServiceTest {
 
         assertEquals(50, resultado);
     }
+
+    @Test
+    void testMultiplicarPorCero() {
+
+        NumerosDTO numerosDto = new NumerosDTO();
+        numerosDto.setNumero1(10);
+        numerosDto.setNumero2(0);
+
+        MultiplicacionService multiplicacionService = new MultiplicacionService();
+
+        int resultado = multiplicacionService.multiplicar(numerosDto);
+
+        assertEquals(0, resultado);
+    }
 }

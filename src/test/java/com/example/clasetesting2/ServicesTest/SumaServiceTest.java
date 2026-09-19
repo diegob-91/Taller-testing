@@ -1,5 +1,6 @@
 package com.example.clasetesting2.ServicesTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.example.clasetesting2.DTO.NumerosDTO;
@@ -18,7 +19,20 @@ public class SumaServiceTest {
 
         int resultado = sumaService.sumar(numerosDTO);
 
-        assert resultado == 5 :
-            "La suma de 2 y 3 debería ser 5, pero fue " + resultado;
+        assertEquals(5, resultado);
+    }
+
+    @Test
+    void testSumaConCeros() {
+
+        NumerosDTO numerosDTO = new NumerosDTO();
+        numerosDTO.setNumero1(0);
+        numerosDTO.setNumero2(0);
+
+        SumaService sumaService = new SumaService();
+
+        int resultado = sumaService.sumar(numerosDTO);
+
+        assertEquals(0, resultado);
     }
 }

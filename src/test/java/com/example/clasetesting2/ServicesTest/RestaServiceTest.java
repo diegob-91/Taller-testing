@@ -1,5 +1,6 @@
 package com.example.clasetesting2.ServicesTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.example.clasetesting2.DTO.NumerosDTO;
@@ -18,7 +19,20 @@ public class RestaServiceTest {
 
         int resultado = resta.restar(numerosDTO);
 
-        assert resultado == 6 :
-            "La resta de 10 y 4 debería ser 6, pero fue " + resultado;
+        assertEquals(6, resultado);
+    }
+
+    @Test
+    void testRestaConResultadoNegativo() {
+
+        NumerosDTO numerosDTO = new NumerosDTO();
+        numerosDTO.setNumero1(5);
+        numerosDTO.setNumero2(10);
+
+        RestaService resta = new RestaService();
+
+        int resultado = resta.restar(numerosDTO);
+
+        assertEquals(-5, resultado);
     }
 }

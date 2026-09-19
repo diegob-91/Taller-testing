@@ -22,17 +22,18 @@ public class DivisionServiceTest {
 
         assertEquals(2, resultado);
     }
+
     @Test
-void testDividirPorCero() {
+    void testDividirPorCero() {
 
-    NumerosDTO numerosDto = new NumerosDTO();
-    numerosDto.setNumero1(10);
-    numerosDto.setNumero2(0);
+        NumerosDTO numerosDto = new NumerosDTO();
+        numerosDto.setNumero1(10);
+        numerosDto.setNumero2(0);
 
-    DivisionService divisionService = new DivisionService();
+        DivisionService divisionService = new DivisionService();
 
-    assertThrows(IllegalArgumentException.class, () -> {
-        divisionService.dividir(numerosDto);
-    });
-}
+        assertThrows(IllegalArgumentException.class, () -> {
+            divisionService.dividir(numerosDto);
+        });
+    }
 }
